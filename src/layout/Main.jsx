@@ -1,7 +1,11 @@
+import Navbar from "../components/Navbar";
+
 export default function Main() {
   return (
     <>
-      <div>Main</div>
+      <div>
+        <Navbar/>
+      </div>
     </>
   );
 }
