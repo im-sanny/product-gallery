@@ -1,4 +1,4 @@
-export const products = [
+export const fakeProducts = [
   {
     id: 1,
     name: "Wireless Noise-Canceling Headphones",
