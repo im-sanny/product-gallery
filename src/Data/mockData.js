@@ -1,10 +1,19 @@
+import SonyImage from '../assets/Sony.jpeg';
+import ShoeImage from '../assets/shoe.jpg';
+import WatchImage from '../assets/watch.jpg';
+import ShirtImage from '../assets/t-shirt.jpg';
+import MatImage from '../assets/mat.jpg';
+import MouseImage from '../assets/mouse.jpg';
+import DenimImage from '../assets/denim.jpg';
+import SpeakerImage from '../assets/speaker.jpg';
+
 export const fakeProducts = [
   {
     id: 1,
     name: "Wireless Noise-Canceling Headphones",
     price: 199.99,
     category: "Electronics",
-    image: "../assets/Sony.jpeg",
+    image: SonyImage,
     rating: 4.8,
     popularity: 95,
     description:
@@ -15,7 +24,7 @@ export const fakeProducts = [
     name: "Ultra-light Running Shoes",
     price: 89.99,
     category: "Sports",
-    image: "../assets/shoe.jpg",
+    image: ShoeImage,
     rating: 4.5,
     popularity: 88,
     description:
@@ -26,7 +35,7 @@ export const fakeProducts = [
     name: "Smart Fitness Watch",
     price: 149.99,
     category: "Electronics",
-    image: "../assets/watch.jpg",
+    image: WatchImage,
     rating: 4.6,
     popularity: 92,
     description:
@@ -37,7 +46,7 @@ export const fakeProducts = [
     name: "Organic Cotton T-Shirt",
     price: 24.99,
     category: "Clothing",
-    image: "../assets/t-shirt.jpg",
+    image: ShirtImage,
     rating: 4.3,
     popularity: 75,
     description:
@@ -48,7 +57,7 @@ export const fakeProducts = [
     name: "Professional Gaming Mouse",
     price: 79.99,
     category: "Electronics",
-    image: "../assets/mouse.jpg",
+    image: MouseImage,
     rating: 4.7,
     popularity: 89,
     description:
@@ -59,7 +68,7 @@ export const fakeProducts = [
     name: "Yoga Mat with Alignment Lines",
     price: 45.99,
     category: "Sports",
-    image: "../assets/mat.jpg",
+    image: MatImage,
     rating: 4.4,
     popularity: 82,
     description:
@@ -70,7 +79,7 @@ export const fakeProducts = [
     name: "Slim Fit Denim Jeans",
     price: 59.99,
     category: "Clothing",
-    image: "../assets/denim.jpg",
+    image: DenimImage,
     rating: 4.2,
     popularity: 78,
     description:
@@ -81,7 +90,7 @@ export const fakeProducts = [
     name: "Portable Bluetooth Speaker",
     price: 129.99,
     category: "Electronics",
-    image: "../assets/speaker.jpg",
+    image: SpeakerImage,
     rating: 4.5,
     popularity: 86,
     description:
@@ -114,7 +123,7 @@ export const fakeProducts = [
     name: "Winter Down Jacket",
     price: 159.99,
     category: "Clothing",
-    image: "/api/placeholder/400/400",
+    image: ShirtImage,
     rating: 4.7,
     popularity: 91,
     description:
@@ -158,7 +167,7 @@ export const fakeProducts = [
     name: "Mechanical Gaming Keyboard",
     price: 119.99,
     category: "Electronics",
-    image: "/api/placeholder/400/400",
+    image: MouseImage,
     rating: 4.8,
     popularity: 93,
     description:
