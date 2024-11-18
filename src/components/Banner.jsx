@@ -1,97 +1,158 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+// import { ArrowRight, ChevronRight } from 'lucide-react';
+import { TiArrowRightOutline } from "react-icons/ti";
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   const bannerData = [
     {
       title: "New Collection 2024",
       subtitle: "Discover trendsetting designs",
       description: "Explore our latest arrivals with up to 40% off",
-      bgColor: "bg-indigo-100",
-      textColor: "text-indigo-900"
+      bgColor: "bg-indigo-50",
+      textColor: "text-indigo-900",
+      accentColor: "bg-indigo-900",
     },
     {
       title: "Premium Quality",
       subtitle: "Handcrafted Excellence",
       description: "Free shipping on orders over $100",
-      bgColor: "bg-amber-100",
-      textColor: "text-amber-900"
+      bgColor: "bg-amber-50",
+      textColor: "text-amber-900",
+      accentColor: "bg-amber-900",
     },
     {
       title: "Special Edition",
       subtitle: "Limited Time Offer",
       description: "Get exclusive deals before they're gone",
-      bgColor: "bg-rose-100",
-      textColor: "text-rose-900"
-    }
+      bgColor: "bg-rose-50",
+      textColor: "text-rose-900",
+      accentColor: "bg-rose-900",
+    },
   ];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % bannerData.length);
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setCurrentSlide((prev) => (prev + 1) % bannerData.length);
+        setIsTransitioning(false);
+      }, 300);
     }, 5000);
 
     return () => clearInterval(timer);
   }, []);
 
   const goToSlide = (index) => {
-    setCurrentSlide(index);
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setIsTransitioning(false);
+    }, 300);
   };
 
   return (
-    <div className="relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '30px 30px'
-        }}></div>
+    <div className="relative h-screen overflow-hidden">
+      {/* Background */}
+      <div
+        className={`absolute inset-0 transition-all duration-700 ease-in-out ${
+          bannerData[currentSlide].bgColor
+        } ${isTransitioning ? "opacity-0 scale-105" : "opacity-100 scale-100"}`}
+      >
+        {/* Decorative elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-64 h-64 -translate-x-1/2 -translate-y-1/2 bg-indigo-100 rounded-full mix-blend-multiply blur-xl opacity-70" />
+          <div className="absolute top-0 right-0 w-64 h-64 translate-x-1/2 -translate-y-1/2 bg-rose-100 rounded-full mix-blend-multiply blur-xl opacity-70" />
+          <div className="absolute bottom-0 left-1/2 w-64 h-64 -translate-x-1/2 translate-y-1/2 bg-amber-100 rounded-full mix-blend-multiply blur-xl opacity-70" />
+        </div>
       </div>
 
-      {/* Main Banner Content */}
-      <div className={`relative ${bannerData[currentSlide].bgColor} transition-colors duration-500`}>
-        <div className="container mx-auto px-4">
-          <div className="flex min-h-[400px] items-center justify-between py-16">
-            {/* Text Content */}
-            <div className="max-w-2xl animate-fadeIn">
-              <h1 className={`mb-4 text-5xl font-bold ${bannerData[currentSlide].textColor}`}>
+      {/* Main content */}
+      <div className="relative h-full flex items-center justify-center px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <div
+            className={`transition-all duration-500 ${
+              isTransitioning
+                ? "opacity-0 translate-y-4"
+                : "opacity-100 translate-y-0"
+            }`}
+          >
+            {/* Title with floating elements */}
+            <div className="relative mb-6">
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                {[...Array(3)].map((_, i) => (
+                  <div
+                    key={i}
+                    className={`w-2 h-2 rounded-full ${bannerData[currentSlide].accentColor} opacity-60`}
+                  />
+                ))}
+              </div>
+              <h1
+                className={`text-6xl font-bold ${bannerData[currentSlide].textColor}`}
+              >
                 {bannerData[currentSlide].title}
               </h1>
-              <h2 className={`mb-6 text-2xl ${bannerData[currentSlide].textColor}`}>
-                {bannerData[currentSlide].subtitle}
-              </h2>
-              <p className={`mb-8 text-lg ${bannerData[currentSlide].textColor}`}>
-                {bannerData[currentSlide].description}
-              </p>
-              <button className="rounded-full bg-white px-8 py-3 font-semibold text-gray-900 shadow-lg transition-transform hover:scale-105">
-                Shop Now
-              </button>
             </div>
 
-            {/* Decorative Elements */}
-            <div className="relative hidden md:block">
-              <div className="absolute -right-4 top-1/2 h-64 w-64 -translate-y-1/2 transform rounded-full border-8 border-white/20"></div>
-              <div className="absolute -right-8 top-1/2 h-48 w-48 -translate-y-1/2 transform rounded-full border-8 border-white/20"></div>
-            </div>
+            <h2
+              className={`text-3xl font-semibold mb-6 ${bannerData[currentSlide].textColor} opacity-90`}
+            >
+              {bannerData[currentSlide].subtitle}
+            </h2>
+
+            <p
+              className={`text-xl mb-8 ${bannerData[currentSlide].textColor} opacity-80`}
+            >
+              {bannerData[currentSlide].description}
+            </p>
+
+            {/* Button with hover effect */}
+            <button
+              className={`group ${bannerData[currentSlide].textColor} 
+              border-2 border-current px-8 py-3 rounded-full font-semibold 
+              inline-flex items-center gap-2 transition-all duration-300
+            `}
+            >
+              Shop Now
+              <TiArrowRightOutline className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Slide Navigation */}
-        <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 transform space-x-2">
-          {bannerData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`h-2 w-8 rounded-full transition-all ${
-                currentSlide === index 
-                  ? 'bg-gray-900 w-12' 
-                  : 'bg-gray-400 hover:bg-gray-600'
+      {/* Navigation dots */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
+        {bannerData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`transition-all duration-300 group p-1`}
+          >
+            <div
+              className={`w-12 h-1.5 rounded-full transition-all duration-300 ${
+                currentSlide === index
+                  ? bannerData[currentSlide].accentColor
+                  : "bg-gray-300 group-hover:bg-gray-400"
               }`}
-              aria-label={`Go to slide ${index + 1}`}
             />
-          ))}
-        </div>
+          </button>
+        ))}
+      </div>
+
+      {/* Side indicators */}
+      <div className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col space-y-4">
+        {bannerData.map((_, index) => (
+          <div
+            key={index}
+            className={`w-1 h-8 rounded-full transition-all duration-300 ${
+              currentSlide === index
+                ? bannerData[currentSlide].accentColor
+                : "bg-gray-300"
+            }`}
+          />
+        ))}
       </div>
     </div>
   );
