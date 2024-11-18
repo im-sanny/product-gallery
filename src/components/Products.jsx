@@ -14,6 +14,11 @@ const Products = () => {
     product.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const filteredCategory = searchProduct.filter(
+    (product) =>
+      selectedCategory === "all" ||
+      product.category.toLowerCase() === selectedCategory.toLowerCase()
+  );
 
   return (
     <div className="container mx-auto px-4 py-8">
