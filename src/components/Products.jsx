@@ -28,7 +28,20 @@ const Products = () => {
     if (priceRange === "100-plus") return product.price > 100;
   });
 
-
+  const sortedProducts = filterByPrice.sort((a, b) => {
+    switch (sortBy) {
+      case "popularity":
+        return b.popularity - a.popularity;
+      case "price-asc":
+        return b.price - a.price;
+      case "price-desc":
+        return b.price - a.price;
+      case "rating":
+        return b.rating - a.rating;
+      default:
+        return 0;
+    }
+  });
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Filter and Search Section */}
