@@ -33,7 +33,7 @@ const Products = () => {
       case "popularity":
         return b.popularity - a.popularity;
       case "price-asc":
-        return b.price - a.price;
+        return a.price - b.price;
       case "price-desc":
         return b.price - a.price;
       case "rating":
@@ -101,7 +101,7 @@ const Products = () => {
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {products.map((product) => (
+        {sortedProducts.map((product) => (
           <div
             key={product.id}
             className="bg-white rounded-lg shadow-md overflow-hidden"
