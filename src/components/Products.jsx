@@ -10,6 +10,11 @@ const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const searchProduct = products.filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Filter and Search Section */}

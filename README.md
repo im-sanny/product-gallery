@@ -125,7 +125,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 📞 Support
 
-For support, please email [email@example.com]
+For support, please email email@example.com
 
 ---
-Made with ❤️ by [Rasel Parvez Sanny]
+Made with ❤️ by Rasel Parvez Sanny
