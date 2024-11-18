@@ -20,6 +20,15 @@ const Products = () => {
       product.category.toLowerCase() === selectedCategory.toLowerCase()
   );
 
+  const filterByPrice = filteredCategory.filter((product) => {
+    if (priceRange === "all") return true;
+    if (priceRange === "0-50") return product.price >= 0 && product.price <= 50;
+    if (priceRange === "51-100")
+      return product.price > 50 && product.price <= 100;
+    if (priceRange === "100-plus") return product.price > 100;
+  });
+
+
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Filter and Search Section */}
