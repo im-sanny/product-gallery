@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState } from 'react';
+import { Home, ShoppingCart, Phone, Info, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,118 +8,92 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
-  return (
-    <nav className="relative bg-white shadow dark:bg-gray-800">
-      <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
-        <div className="flex items-center justify-between">
-          <p className="text-2xl text-white">Product Gallery</p>
+  const NavLinks = [
+    { name: 'Home', href: '#', icon: Home },
+    { name: 'Shop', href: '#', icon: ShoppingCart },
+    { name: 'Contact', href: '#', icon: Phone },
+    { name: 'About', href: '#', icon: Info }
+  ];
 
-          {/* Mobile menu button */}
-          <div className="flex lg:hidden">
+  return (
+    <nav className="bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* Logo and Title */}
+          <div className="flex items-center">
+            <div className="flex-shrink-0 flex items-center">
+              <svg 
+                className="h-8 w-8 text-white mr-2" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 01-4.305-4.305l-.477-2.387a2 2 0 00-.547-1.022L6 5.354V9a1 1 0 001 1h3.646l-1.643-1.643a1 1 0 111.414-1.414L11 7.586V11a1 1 0 001 1h3.646l-1.643-1.643a1 1 0 111.414-1.414L15 9.586V13a1 1 0 001 1h3.646l-1.643-1.643a1 1 0 111.414-1.414l2.987 2.987a2 2 0 01.547 1.022l.477 2.387a6 6 0 01-4.305 4.305l-2.387.477a2 2 0 00-1.022.547l-1.643 1.643a2 2 0 01-2.828 0l-1.643-1.643a2 2 0 00-1.022-.547l-2.387-.477A6 6 0 015.354 15.43l-.477-2.387a2 2 0 00-.547-1.022L2.354 9.646a2 2 0 010-2.828l1.643-1.643a2 2 0 00.547-1.022l.477-2.387a6 6 0 014.305-4.305l2.387-.477a2 2 0 001.022-.547l1.643-1.643a2 2 0 012.828 0l1.643 1.643a2 2 0 001.022.547l2.387.477A6 6 0 0118.646 4.57l.477 2.387a2 2 0 00.547 1.022l1.643 1.643a2 2 0 010 2.828l-1.643 1.643a2 2 0 00-.547 1.022l-.477 2.387a6 6 0 01-4.305 4.305l-2.387.477a2 2 0 00-1.022.547l-1.643 1.643a2 2 0 01-2.828 0z" 
+                />
+              </svg>
+              <span className="text-2xl font-bold text-white">Product Gallery</span>
+            </div>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden sm:flex sm:items-center sm:ml-6 space-x-4">
+            {NavLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-white hover:bg-indigo-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-2 transition-all duration-300 ease-in-out transform hover:scale-105"
+              >
+                <link.icon className="h-5 w-5" />
+                <span>{link.name}</span>
+              </a>
+            ))}
+
+            {/* Cart Icon */}
+            <div className="relative">
+              <a 
+                href="#" 
+                className="text-white hover:text-gray-200 transition-colors duration-300"
+              >
+                <ShoppingCart className="h-6 w-6" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full h-5 w-5 flex items-center justify-center text-xs">
+                  3
+                </span>
+              </a>
+            </div>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="flex sm:hidden items-center">
             <button
               onClick={toggleMenu}
-              type="button"
-              className="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400"
-              aria-label="toggle menu"
+              className="text-white hover:text-gray-200 focus:outline-none focus:text-white transition-colors duration-300"
             >
-              {!isOpen ? (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4 8h16M4 16h16"
-                  />
-                </svg>
-              ) : (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 h-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              )}
+              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <div
-          className={`
-                        absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out 
-                        bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent 
-                        md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center
-                        ${
-                          isOpen
-                            ? "translate-x-0 opacity-100"
-                            : "opacity-0 -translate-x-full md:opacity-100 md:translate-x-0"
-                        }`}
-        >
-          <div className="flex flex-col md:flex-row md:mx-6">
-            <a
-              className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-              href="#"
-            >
-              Home
-            </a>
-            <a
-              className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-              href="#"
-            >
-              Shop
-            </a>
-            <a
-              className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-              href="#"
-            >
-              Contact
-            </a>
-            <a
-              className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0"
-              href="#"
-            >
-              About
-            </a>
+        {isOpen && (
+          <div className="sm:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-white/10 backdrop-blur-sm rounded-lg">
+              {NavLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-white hover:bg-indigo-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium flex items-center space-x-2 transition-all duration-300"
+                >
+                  <link.icon className="h-5 w-5" />
+                  <span>{link.name}</span>
+                </a>
+              ))}
+            </div>
           </div>
-
-          <div className="flex justify-center md:block">
-            <a
-              className="relative text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-300"
-              href="#"
-            >
-              <svg
-                className="w-5 h-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M3 3H5L5.4 5M7 13H17L21 5H5.4M7 13L5.4 5M7 13L4.70711 15.2929C4.07714 15.9229 4.52331 17 5.41421 17H17M17 17C15.8954 17 15 17.8954 15 19C15 20.1046 15.8954 21 17 21C18.1046 21 19 20.1046 19 19C19 17.8954 18.1046 17 17 17ZM9 19C9 20.1046 8.10457 21 7 21C5.89543 21 5 20.1046 5 19C5 17.8954 5.89543 17 7 17C8.10457 17 9 17.8954 9 19Z"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-
-              <span className="absolute top-0 left-0 p-1 text-xs text-white bg-blue-500 rounded-full"></span>
-            </a>
-          </div>
-        </div>
+        )}
       </div>
     </nav>
   );
