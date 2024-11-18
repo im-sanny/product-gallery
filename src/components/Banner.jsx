@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { ArrowRight, ChevronRight } from 'lucide-react';
 import { TiArrowRightOutline } from "react-icons/ti";
 
 const Banner = () => {
