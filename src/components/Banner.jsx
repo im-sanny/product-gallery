@@ -54,7 +54,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-[calc(100vh-64px)] overflow-hidden ">
       {/* Background */}
       <div
         className={`absolute inset-0 transition-all duration-700 ease-in-out ${

@@ -4,7 +4,7 @@ export const fakeProducts = [
     name: "Wireless Noise-Canceling Headphones",
     price: 199.99,
     category: "Electronics",
-    image: "/api/placeholder/400/400",
+    image: "../assets/Sony.jpeg",
     rating: 4.8,
     popularity: 95,
     description:
@@ -15,7 +15,7 @@ export const fakeProducts = [
     name: "Ultra-light Running Shoes",
     price: 89.99,
     category: "Sports",
-    image: "/api/placeholder/400/400",
+    image: "../assets/shoe.jpg",
     rating: 4.5,
     popularity: 88,
     description:
@@ -26,7 +26,7 @@ export const fakeProducts = [
     name: "Smart Fitness Watch",
     price: 149.99,
     category: "Electronics",
-    image: "/api/placeholder/400/400",
+    image: "../assets/watch.jpg",
     rating: 4.6,
     popularity: 92,
     description:
@@ -37,7 +37,7 @@ export const fakeProducts = [
     name: "Organic Cotton T-Shirt",
     price: 24.99,
     category: "Clothing",
-    image: "/api/placeholder/400/400",
+    image: "../assets/t-shirt.jpg",
     rating: 4.3,
     popularity: 75,
     description:
@@ -48,7 +48,7 @@ export const fakeProducts = [
     name: "Professional Gaming Mouse",
     price: 79.99,
     category: "Electronics",
-    image: "/api/placeholder/400/400",
+    image: "../assets/mouse.jpg",
     rating: 4.7,
     popularity: 89,
     description:
@@ -59,7 +59,7 @@ export const fakeProducts = [
     name: "Yoga Mat with Alignment Lines",
     price: 45.99,
     category: "Sports",
-    image: "/api/placeholder/400/400",
+    image: "../assets/mat.jpg",
     rating: 4.4,
     popularity: 82,
     description:
@@ -70,7 +70,7 @@ export const fakeProducts = [
     name: "Slim Fit Denim Jeans",
     price: 59.99,
     category: "Clothing",
-    image: "/api/placeholder/400/400",
+    image: "../assets/denim.jpg",
     rating: 4.2,
     popularity: 78,
     description:
@@ -81,7 +81,7 @@ export const fakeProducts = [
     name: "Portable Bluetooth Speaker",
     price: 129.99,
     category: "Electronics",
-    image: "/api/placeholder/400/400",
+    image: "../assets/speaker.jpg",
     rating: 4.5,
     popularity: 86,
     description:
