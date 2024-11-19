@@ -24,21 +24,25 @@ A modern, responsive product gallery built with React and Tailwind CSS, featurin
 ## 📦 Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/product-gallery.git
 ```
 
 2. Navigate to the project directory:
+
 ```bash
 cd product-gallery
 ```
 
 3. Install dependencies:
+
 ```bash
 npm install
 ```
 
 4. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -128,4 +132,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 For support, please email email@example.com
 
 ---
+
 Made with ❤️ by Rasel Parvez Sanny
